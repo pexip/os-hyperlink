@@ -3,26 +3,18 @@ Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.
 Uploaders: Free Ekanayaka <freee@debian.org>
 Section: python
 Priority: optional
-Build-Depends: debhelper (>= 9),
+Build-Depends: debhelper-compat (= 12),
                dh-python,
-               python-all (>= 2.6.6-3),
-               python-setuptools (>= 0.6b3),
+               python3-idna (>= 2.5),
+               python3-pytest,
+               python3-pytest-cov,
+               tox,
                python3-all,
                python3-setuptools (>= 0.6b3)
-Standards-Version: 4.0.0
+Standards-Version: 4.4.1
 Homepage: https://github.com/python-hyper/hyperlink
-Vcs-Browser: https://anonscm.debian.org/cgit/python-modules/packages/hyperlink.git
-Vcs-Git: git://anonscm.debian.org/python-modules/packages/hyperlink.git
-
-Package: python-hyperlink
-Architecture: all
-Depends: ${misc:Depends}, ${python:Depends}
-Description: Immutable, Pythonic, correct URLs.
- Hyperlink provides a pure-Python implementation of immutable URLs. Based on
- RFC 3986 and 3987, the Hyperlink URL makes working with both URIs and IRIs
- easy.
- .
- This package provides the Python 2.x module.
+Vcs-Browser: https://salsa.debian.org/python-team/modules/hyperlink
+Vcs-Git: https://salsa.debian.org/python-team/modules/hyperlink.git
 
 Package: python3-hyperlink
 Architecture: all
