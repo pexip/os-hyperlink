@@ -1,6 +1,7 @@
 Source: hyperlink
-Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
-Uploaders: Free Ekanayaka <freee@debian.org>
+Maintainer: Pexip AS <packaging@pexip.com>
+XSBC-Pexip-Original-Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+XSBC-Pexip-Original-Uploaders: Free Ekanayaka <freee@debian.org>
 Section: python
 Priority: optional
 Build-Depends: debhelper (>= 9),
@@ -13,6 +14,7 @@ Standards-Version: 4.0.0
 Homepage: https://github.com/python-hyper/hyperlink
 Vcs-Browser: https://anonscm.debian.org/cgit/python-modules/packages/hyperlink.git
 Vcs-Git: git://anonscm.debian.org/python-modules/packages/hyperlink.git
+XS-Pexip-Upstream: http://mirror.einval.org/debian/ buster
 
 Package: python-hyperlink
 Architecture: all
