@@ -1,3 +1,32 @@
+hyperlink (19.0.0-2) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+  [ Sandro Tosi ]
+  * Drop python2 support; Closes: #936714
+
+ -- Sandro Tosi <morph@debian.org>  Wed, 01 Apr 2020 23:04:18 -0400
+
+hyperlink (19.0.0-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/copyright: Use https protocol in Format field
+  * d/watch: Use https protocol
+  * Use debhelper-compat instead of debian/compat.
+
+  [ Håvard Flaget Aasen ]
+  * New upstream version 19.0.0
+  * Bump dh to 12
+  * Add tests for python 3.7 and 3.8
+  * Update Standards-Version to 4.4.1
+
+ -- Håvard Flaget Aasen <haavard_aasen@yahoo.no>  Tue, 19 Nov 2019 14:16:42 +0100
+
 hyperlink (17.3.1-2pexip2) pexip; urgency=medium
 
   * Rebuild in buster environment

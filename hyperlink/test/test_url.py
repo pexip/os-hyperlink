@@ -5,6 +5,7 @@
 
 from __future__ import unicode_literals
 
+import sys
 import socket
 
 from .common import HyperlinkTestCase
@@ -13,6 +14,8 @@ from .. import URL, URLParseError
 from .. import _url
 from .._url import inet_pton, SCHEME_PORT_MAP, parse_host
 
+
+PY2 = (sys.version_info[0] == 2)
 unicode = type(u'')
 
 
@@ -330,6 +333,13 @@ class TestURL(HyperlinkTestCase):
         self.assertTrue(childURL.rooted)
         self.assertEqual("http://www.foo.com/c", childURL.to_text())
 
+    def test_emptyChild(self):
+        """
+        L{URL.child} without any new segments returns the original L{URL}.
+        """
+        url = URL(host=u"www.foo.com")
+        self.assertEqual(url.child(), url)
+
     def test_sibling(self):
         """
         L{URL.sibling} of a L{URL} replaces the last path segment, but does not
@@ -517,12 +527,27 @@ class TestURL(HyperlinkTestCase):
 
     def test_queryRemove(self):
         """
-        L{URL.remove} removes all instances of a query parameter.
+        L{URL.remove} removes instances of a query parameter.
         """
         url = URL.from_text(u"https://example.com/a/b/?foo=1&bar=2&foo=3")
         self.assertEqual(
             url.remove(u"foo"),
             URL.from_text(u"https://example.com/a/b/?bar=2")
+        )
+
+        self.assertEqual(
+            url.remove(name=u"foo", value=u"1"),
+            URL.from_text(u"https://example.com/a/b/?bar=2&foo=3")
+        )
+
+        self.assertEqual(
+            url.remove(name=u"foo", limit=1),
+            URL.from_text(u"https://example.com/a/b/?bar=2&foo=3")
+        )
+
+        self.assertEqual(
+            url.remove(name=u"foo", value=u"1", limit=0),
+            URL.from_text(u"https://example.com/a/b/?foo=1&bar=2&foo=3")
         )
 
     def test_parseEqualSignInParamValue(self):
@@ -532,10 +557,16 @@ class TestURL(HyperlinkTestCase):
         """
         u = URL.from_text('http://localhost/?=x=x=x')
         self.assertEqual(u.get(''), ['x=x=x'])
-        self.assertEqual(u.to_text(), 'http://localhost/?=x%3Dx%3Dx')
+        self.assertEqual(u.to_text(), 'http://localhost/?=x=x=x')
         u = URL.from_text('http://localhost/?foo=x=x=x&bar=y')
         self.assertEqual(u.query, (('foo', 'x=x=x'), ('bar', 'y')))
-        self.assertEqual(u.to_text(), 'http://localhost/?foo=x%3Dx%3Dx&bar=y')
+        self.assertEqual(u.to_text(), 'http://localhost/?foo=x=x=x&bar=y')
+
+        u = URL.from_text('https://example.com/?argument=3&argument=4&operator=%3D')
+        iri = u.to_iri()
+        self.assertEqual(iri.get('operator'), ['='])
+        # assert that the equals is not unnecessarily escaped
+        self.assertEqual(iri.to_uri().get('operator'), ['='])
 
     def test_empty(self):
         """
@@ -735,10 +766,14 @@ class TestURL(HyperlinkTestCase):
     def test_queryIterable(self):
         """
         When a L{URL} is created with a C{query} argument, the C{query}
-        argument is converted into an N-tuple of 2-tuples.
+        argument is converted into an N-tuple of 2-tuples, sensibly
+        handling dictionaries.
         """
+        expected = (('alpha', 'beta'),)
         url = URL(query=[['alpha', 'beta']])
-        self.assertEqual(url.query, (('alpha', 'beta'),))
+        self.assertEqual(url.query, expected)
+        url = URL(query={'alpha': 'beta'})
+        self.assertEqual(url.query, expected)
 
     def test_pathIterable(self):
         """
@@ -1138,4 +1173,38 @@ class TestURL(HyperlinkTestCase):
         assert norm_delimited_url.to_text() == '/a%2Fb/cd%3F?k%3D=v%23#test'
 
         # test invalid percent encoding during normalize
-        assert URL(path=('', '%te%sts')).normalize().to_text() == '/%te%sts'
+        assert URL(path=('', '%te%sts')).normalize(percents=False).to_text() == '/%te%sts'
+        assert URL(path=('', '%te%sts')).normalize().to_text() == '/%25te%25sts'
+
+        percenty_url = URL(scheme='ftp', path=['%%%', '%a%b'], query=[('%', '%%')], fragment='%', userinfo='%:%')
+
+        assert percenty_url.to_text(with_password=True) == 'ftp://%:%@/%%%/%a%b?%=%%#%'
+        assert percenty_url.normalize().to_text(with_password=True) == 'ftp://%25:%25@/%25%25%25/%25a%25b?%25=%25%25#%25'
+
+    def test_str(self):
+        # see also issue #49
+        text = u'http://example.com/á/y%20a%20y/?b=%25'
+        url = URL.from_text(text)
+        assert unicode(url) == text
+        assert bytes(url) == b'http://example.com/%C3%A1/y%20a%20y/?b=%25'
+
+        if PY2:
+            assert isinstance(str(url), bytes)
+            assert isinstance(unicode(url), unicode)
+        else:
+            assert isinstance(str(url), unicode)
+            assert isinstance(bytes(url), bytes)
+
+    def test_idna_corners(self):
+        text = u'http://abé.com/'
+        url = URL.from_text(text)
+        assert url.to_iri().host == u'abé.com'
+        assert url.to_uri().host == u'xn--ab-cja.com'
+
+        url = URL.from_text("http://ドメイン.テスト.co.jp#test")
+        assert url.to_iri().host == u'ドメイン.テスト.co.jp'
+        assert url.to_uri().host == u'xn--eckwd4c7c.xn--zckzah.co.jp'
+
+        assert url.to_uri().get_decoded_url().host == u'ドメイン.テスト.co.jp'
+
+        assert URL.from_text('http://Example.com').to_uri().get_decoded_url().host == 'example.com'
