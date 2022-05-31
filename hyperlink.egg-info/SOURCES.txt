@@ -24,9 +24,12 @@ hyperlink.egg-info/PKG-INFO
 hyperlink.egg-info/SOURCES.txt
 hyperlink.egg-info/dependency_links.txt
 hyperlink.egg-info/not-zip-safe
+hyperlink.egg-info/requires.txt
 hyperlink.egg-info/top_level.txt
 hyperlink/test/__init__.py
 hyperlink/test/common.py
 hyperlink/test/test_common.py
+hyperlink/test/test_decoded_url.py
+hyperlink/test/test_parse.py
 hyperlink/test/test_scheme_registration.py
 hyperlink/test/test_url.py

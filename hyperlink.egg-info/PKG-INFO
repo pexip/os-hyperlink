@@ -1,7 +1,7 @@
 Metadata-Version: 1.1
 Name: hyperlink
-Version: 17.3.1
-Summary: A featureful, correct URL for Python.
+Version: 19.0.0
+Summary: A featureful, immutable, and correct URL for Python.
 Home-page: https://github.com/python-hyper/hyperlink
 Author: Mahmoud Hashemi and Glyph Lefkowitz
 Author-email: mahmoud@hatnote.com
