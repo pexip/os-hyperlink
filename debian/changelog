@@ -1,3 +1,55 @@
+hyperlink (21.0.0-5) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Remove constraints unnecessary since buster:
+    + Build-Depends: Drop versioned constraint on python3-idna and
+      python3-setuptools.
+
+ -- Jelmer Vernooĳ <jelmer@debian.org>  Fri, 17 Jun 2022 09:24:35 +0100
+
+hyperlink (21.0.0-4) unstable; urgency=medium
+
+  * Update standards version to 4.6.0, no changes needed.
+
+ -- Debian Janitor <janitor@jelmer.uk>  Thu, 26 May 2022 18:21:01 +0100
+
+hyperlink (21.0.0-3) unstable; urgency=medium
+
+  [ Stefano Rivera ]
+  * Team upload.
+  * Drop tox Build-Dep, we're doing build-time tests without it, fixes FTBFS
+    with dh-python >= 5.20211105.
+
+  [ Debian Janitor ]
+  * Bump debhelper from old 12 to 13.
+  * Update standards version to 4.5.1, no changes needed.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 05 Nov 2021 00:48:34 -0700
+
+hyperlink (21.0.0-2) unstable; urgency=medium
+
+  * Uploading to unstable.
+
+ -- Thomas Goirand <zigo@debian.org>  Wed, 29 Sep 2021 13:41:54 +0200
+
+hyperlink (21.0.0-1) experimental; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Update Maintainer field with new Debian Python Team
+    contact address.
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+  [ Debian Janitor ]
+  * Update standards version to 4.5.0, no changes needed.
+
+  [ Thomas Goirand ]
+  * Team upload.
+  * New upstream release.
+  * Ran wrap-and-sort -bastk.
+
+ -- Thomas Goirand <zigo@debian.org>  Wed, 25 Aug 2021 11:01:11 +0200
+
 hyperlink (19.0.0-2) unstable; urgency=medium
 
   [ Debian Janitor ]
