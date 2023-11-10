@@ -64,8 +64,8 @@ project = u'hyperlink'
 copyright = u'2018, Mahmoud Hashemi'
 author = u'Mahmoud Hashemi'
 
-version = '18.0'
-release = '18.0.0'
+version = '20.0'
+release = '20.0.1'
 
 if os.name != 'nt':
     today_fmt = '%B %d, %Y'
@@ -76,7 +76,7 @@ exclude_patterns = ['_build']
 pygments_style = 'sphinx'
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'python': ('https://docs.python.org/2.7', None)}
+intersphinx_mapping = {'python': ('https://docs.python.org/3.7', None)}
 
 
 # -- Options for HTML output ----------------------------------------------

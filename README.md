@@ -2,15 +2,30 @@
 
 *Cool URLs that don't change.*
 
-<a href="https://hyperlink.readthedocs.io/en/latest/"><img src="https://img.shields.io/badge/docs-latest-brightgreen.svg?style=flat"></a>
-<a href="https://pypi.python.org/pypi/hyperlink"><img src="https://img.shields.io/pypi/v/boltons.svg"></a>
-<a href="http://calver.org"><img src="https://img.shields.io/badge/calver-YY.MINOR.MICRO-22bfda.svg"></a>
+<a href="https://hyperlink.readthedocs.io/en/latest/">
+    <img src="https://img.shields.io/badge/docs-latest-brightgreen.svg?style=flat" alt="Documentation">
+</a>
+<a href="https://pypi.org/project/hyperlink/">
+    <img src="https://img.shields.io/pypi/v/hyperlink.svg" alt="PyPI">
+</a>
+<a href="http://calver.org">
+    <img src="https://img.shields.io/badge/calver-YY.MINOR.MICRO-22bfda.svg" alt="Calendar Versioning">
+</a>
+<a href="https://pypi.org/project/hyperlink/">
+    <img src="https://img.shields.io/pypi/pyversions/hyperlink.svg" alt="Python Version Compatibility">
+</a>
+<a href="https://https://codecov.io/github/python-hyper/hyperlink?branch=master">
+    <img src="https://codecov.io/github/python-hyper/hyperlink/coverage.svg?branch=master" alt="Code Coverage">
+</a>
+<a href="https://requires.io/github/python-hyper/hyperlink/requirements/?branch=master">
+    <img src="https://requires.io/github/python-hyper/hyperlink/requirements.svg?branch=master" alt="Requirements Status">
+</a>
 
 Hyperlink provides a pure-Python implementation of immutable
 URLs. Based on [RFC 3986][rfc3986] and [3987][rfc3987], the Hyperlink URL
 makes working with both URIs and IRIs easy.
 
-Hyperlink is tested against Python 2.7, 3.4, 3.5, 3.6, and PyPy.
+Hyperlink is tested against Python 2.7, 3.4, 3.5, 3.6, 3.7, 3.8, and PyPy.
 
 Full documentation is available on [Read the Docs][docs].
 
