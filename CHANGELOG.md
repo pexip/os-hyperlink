@@ -1,6 +1,39 @@
 # Hyperlink Changelog
 
-## dev (not yet released)
+## 20.0.1
+
+*(August 4, 2020)*
+
+Rerelease to fix packaging metadata around conditional requirements.
+See [issue #133](https://github.com/python-hyper/hyperlink/issues/133)
+for more details.
+
+## 20.0.0
+
+*(August 3, 2020)*
+
+* CPython 3.7 and 3.8 and PyPy3 added to test matrix
+* Hyperlink now has type hints and they are now exported per
+  [PEP 561](https://www.python.org/dev/peps/pep-0561/).
+* Several bugs related to hidden state were fixed, making it so that all data
+  on a `URL` object (including `rooted` and `uses_netloc`) is reflected by and
+  consistent with its textual representation.
+  This does mean that sometimes these constructor arguments are ignored, if it
+  would create invalid or unparseable URL text.
+
+## 19.0.0
+
+*(April 7, 2019)*
+
+A query parameter-centric release, with two enhancements:
+
+* "equals sign" characters in query parameter values are no longer
+  escaped. (see
+  [#39](https://github.com/python-hyper/hyperlink/pull/39))
+* `URL.remove()` now accepts *value* and *limit* parameters, allowing
+  for removal of specific name-value pairs, as well as limiting the
+  number of removals.
+  (See [#71](https://github.com/python-hyper/hyperlink/pull/71))
 
 ## 18.0.0
 

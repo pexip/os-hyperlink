@@ -1,27 +1,31 @@
 Source: hyperlink
 Maintainer: Pexip AS <packaging@pexip.com>
-XSBC-Pexip-Original-Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
-XSBC-Pexip-Original-Uploaders: Free Ekanayaka <freee@debian.org>
+XSBC-Pexip-Original-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+XSBC-Pexip-Original-Uploaders:
+ Free Ekanayaka <freee@debian.org>,
 Section: python
 Priority: optional
-Build-Depends: debhelper-compat (= 12),
-               dh-python,
-               python3-idna (>= 2.5),
-               python3-pytest,
-               python3-pytest-cov,
-               tox,
-               python3-all,
-               python3-setuptools (>= 0.6b3)
-Standards-Version: 4.4.1
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-python,
+ python3-all,
+ python3-idna,
+ python3-pytest,
+ python3-pytest-cov,
+ python3-setuptools,
+Standards-Version: 4.6.0
 Homepage: https://github.com/python-hyper/hyperlink
-Vcs-Browser: https://salsa.debian.org/python-team/modules/hyperlink
-Vcs-Git: https://salsa.debian.org/python-team/modules/hyperlink.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/hyperlink
+Vcs-Git: https://salsa.debian.org/python-team/packages/hyperlink.git
 XS-Pexip-Upstream: http://deb.debian.org/debian/ bookworm
 
 Package: python3-hyperlink
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}
-Provides: ${python3:Provides}
+Depends:
+ ${misc:Depends},
+ ${python3:Depends},
+Provides:
+ ${python3:Provides},
 Description: Immutable, Pythonic, correct URLs.
  Hyperlink provides a pure-Python implementation of immutable URLs. Based on
  RFC 3986 and 3987, the Hyperlink URL makes working with both URIs and IRIs
