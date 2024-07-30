@@ -7,12 +7,13 @@ Priority: optional
 Build-Depends:
  debhelper-compat (= 13),
  dh-python,
+ pybuild-plugin-pyproject,
  python3-all,
  python3-idna,
  python3-pytest,
  python3-pytest-cov,
  python3-setuptools,
-Standards-Version: 4.6.0
+Standards-Version: 4.7.0
 Homepage: https://github.com/python-hyper/hyperlink
 Vcs-Browser: https://salsa.debian.org/python-team/packages/hyperlink
 Vcs-Git: https://salsa.debian.org/python-team/packages/hyperlink.git

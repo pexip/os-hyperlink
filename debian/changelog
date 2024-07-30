@@ -1,3 +1,11 @@
+hyperlink (21.0.0-6) unstable; urgency=medium
+
+  * Team upload.
+  * Use pybuild-plugin-pyproject.
+  * Standards-Version: 4.7.0 (no changes required).
+
+ -- Colin Watson <cjwatson@debian.org>  Tue, 30 Jul 2024 18:01:46 +0100
+
 hyperlink (21.0.0-5) unstable; urgency=medium
 
   [ Debian Janitor ]
