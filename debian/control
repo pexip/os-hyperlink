@@ -17,7 +17,7 @@ Standards-Version: 4.6.0
 Homepage: https://github.com/python-hyper/hyperlink
 Vcs-Browser: https://salsa.debian.org/python-team/packages/hyperlink
 Vcs-Git: https://salsa.debian.org/python-team/packages/hyperlink.git
-XS-Pexip-Upstream: http://deb.debian.org/debian/ bookworm
+XS-Pexip-Upstream: http://deb.debian.org/debian/ trixie
 
 Package: python3-hyperlink
 Architecture: all
